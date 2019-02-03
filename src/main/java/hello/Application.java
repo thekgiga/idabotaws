@@ -1,12 +1,7 @@
 package hello;
 
-import java.util.Arrays;
-
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Application {
@@ -20,6 +15,11 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+
+//    SELECT * FROM ida.reservationcalendar as rc
+//    where rc.date between '2018/12/23' and '2018/12/24' and rc.idappartment = 1;
+
+
 
 //    @Bean
 //    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
