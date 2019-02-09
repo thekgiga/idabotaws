@@ -49,7 +49,8 @@ public class HelloController {
                 result.add("INSTRUCTION :" + instruction + " for ROOM " + idroom + " on FLOOR " + floor + "\t");
             }
         } catch (SQLException e) {
-            System.out.println("exception shit happened");
+            result = new ArrayList<>();
+            result.add("CAN NOT CONNECT TO DATABASE");
         }
         return result;
     }
