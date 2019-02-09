@@ -32,6 +32,11 @@ public class HelloController {
         return new JSONArray(result).toString();
     }
 
+    @RequestMapping("/test")
+    public String index() {
+        return "HELLO WORLD";
+    }
+
 
     public ArrayList executeTestAction() {
         ArrayList result = new ArrayList<>();
