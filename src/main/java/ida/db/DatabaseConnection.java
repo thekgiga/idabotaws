@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package db;
+package ida.db;
 
 import java.sql.*;
 
@@ -12,7 +12,7 @@ public class DatabaseConnection {
     public static DatabaseConnection db;
 
     private DatabaseConnection() {
-        String url = "jdbc:mysql://idabot.ce5uk1li1gbt.eu-central-1.rds.amazonaws.com:3306/";
+        String url = "jdbc:mysql://idabot.ce5uk1li1gbt.eu-central-1.rds.amazonaws.com:3306/?ssslca=config/rds-ca-2015-root.pem";
         String driver = "com.mysql.jdbc.Driver";
         String userName = "thekgiga";
         String password = "Kragujevac.94";

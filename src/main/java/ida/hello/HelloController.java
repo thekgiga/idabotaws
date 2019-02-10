@@ -1,6 +1,6 @@
-package hello;
+package ida.hello;
 
-import db.DatabaseConnection;
+import ida.db.DatabaseConnection;
 import org.json.JSONArray;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +15,6 @@ public class HelloController {
 
     @RequestMapping("/search")
     public String index(@RequestParam("action") String action, @RequestParam(value = "startDate", required = false) String startDate, @RequestParam(value = "endDate", required = false) String endDate) {
-
         ArrayList result = new ArrayList<>();
         result.add("---GREETINGS---");
         result.add("ACTION EXECUTED: " + action);
@@ -39,6 +38,7 @@ public class HelloController {
 
 
     public ArrayList executeTestAction() {
+        System.out.println("EXECUTING TEST ACTION");
         ArrayList result = new ArrayList<>();
         try {
             ResultSet rs = DatabaseConnection.getInstance().query("SELECT * FROM ida.room;");
