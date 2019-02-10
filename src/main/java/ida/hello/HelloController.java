@@ -19,11 +19,11 @@ public class HelloController {
         result.add("---GREETINGS---");
         result.add("ACTION EXECUTED: " + action);
 
-        switch (action) {
-            case "READ":
+        switch (action.toLowerCase().trim()) {
+            case "read":
                 result.add(executeTestAction());
                 break;
-            case "SEARCH":
+            case "search":
                 result.add(searchBetweenDates(startDate, endDate));
                 break;
         }
