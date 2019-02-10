@@ -26,6 +26,9 @@ public class HelloController {
             case "search":
                 result.add(searchBetweenDates(startDate, endDate));
                 break;
+            case "heroku":
+                result.add(executeHerokuAction());
+                break;
         }
 
         return new JSONArray(result).toString();
@@ -47,6 +50,23 @@ public class HelloController {
                 String idroom = rs.getString("idroom");
                 String floor = rs.getString("floor");
                 result.add("INSTRUCTION :" + instruction + " for ROOM " + idroom + " on FLOOR " + floor + "\t");
+            }
+        } catch (SQLException e) {
+            result = new ArrayList<>();
+            result.add("CAN NOT CONNECT TO DATABASE");
+        }
+        return result;
+    }
+
+    public ArrayList executeHerokuAction() {
+        System.out.println("EXECUTING HEROKU POSTGRATE SQL CONNECTION ACTION");
+        ArrayList result = new ArrayList<>();
+        try {
+            ResultSet rs = DatabaseConnection.getInstance().query("SELECT * FROM public.\"testTable\";");
+            while (rs.next()) {
+                int id = rs.getInt("testID");
+                String name = rs.getString("testName");
+                result.add("id :" + id + " for test table with name " + name + ".\t");
             }
         } catch (SQLException e) {
             result = new ArrayList<>();
