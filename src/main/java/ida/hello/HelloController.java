@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Map;
 
 @RestController
 public class HelloController {
@@ -46,11 +47,16 @@ public class HelloController {
     @PostMapping("/bookApt")
     @ResponseBody
     public ResponseEntity<Boolean> saveData(HttpServletRequest request,
-                                            HttpServletResponse response, Model model){
+                                            HttpServletResponse response, Model model) {
 
         System.out.println("post request receivde");
-        System.out.println(request.getParameterMap());
-//        System.out.println(request.getParameter("request.getParameter(\"json\")"));
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        for (Map.Entry<String, String[]> entry : parameterMap.entrySet())
+        {
+            System.out.println(entry.getKey() + "->" + entry.getValue());
+        }
+
+        System.out.println(request.getParameter("json"));
         String jsonString = request.getParameter("json");
         return null;
     }
