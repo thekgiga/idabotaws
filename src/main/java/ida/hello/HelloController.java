@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Map;
 
 @RestController
@@ -50,11 +51,12 @@ public class HelloController {
                                             HttpServletResponse response, Model model) {
 
         System.out.println("post request receivde");
-        Map<String, String[]> parameterMap = request.getParameterMap();
-        for (Map.Entry<String, String[]> entry : parameterMap.entrySet())
-        {
-            System.out.println(entry.getKey() + "->" + entry.getValue());
-        }
+        Enumeration<String> parameterMap = request.getAttributeNames();
+        System.out.println("parameters map: " + parameterMap);
+//        for (Map.Entry<String, String[]> entry : parameterMap.entrySet())
+//        {
+//            System.out.println(entry.getKey() + "->" + entry.getValue());
+//        }
 
         System.out.println(request.getParameter("json"));
         String jsonString = request.getParameter("json");
