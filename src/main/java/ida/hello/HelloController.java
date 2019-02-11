@@ -2,10 +2,13 @@ package ida.hello;
 
 import ida.db.DatabaseConnection;
 import org.json.JSONArray;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -39,6 +42,16 @@ public class HelloController {
         return "HELLO WORLD";
     }
 
+
+    @PostMapping("/bookApt")
+    @ResponseBody
+    public ResponseEntity<Boolean> saveData(HttpServletRequest request,
+                                            HttpServletResponse response, Model model){
+        System.out.println(request.getParameterMap());
+//        System.out.println(request.getParameter("request.getParameter(\"json\")"));
+        String jsonString = request.getParameter("json");
+        return null;
+    }
 
     public ArrayList executeTestAction() {
         System.out.println("EXECUTING TEST ACTION");
