@@ -47,6 +47,8 @@ public class HelloController {
     @ResponseBody
     public ResponseEntity<Boolean> saveData(HttpServletRequest request,
                                             HttpServletResponse response, Model model){
+
+        System.out.println("post request receivde");
         System.out.println(request.getParameterMap());
 //        System.out.println(request.getParameter("request.getParameter(\"json\")"));
         String jsonString = request.getParameter("json");
