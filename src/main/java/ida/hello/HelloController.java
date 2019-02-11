@@ -1,7 +1,10 @@
 package ida.hello;
 
 import ida.db.DatabaseConnection;
+import org.json.HTTP;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -48,9 +53,29 @@ public class HelloController {
     @PostMapping("/bookApt")
     @ResponseBody
     public ResponseEntity<Boolean> saveData(HttpServletRequest request,
-                                            HttpServletResponse response, Model model) {
+                                            HttpServletResponse response, Model model) throws IOException {
 
         System.out.println("post request receivde");
+
+
+        StringBuffer jb = new StringBuffer();
+        String line = null;
+        try {
+            BufferedReader reader = request.getReader();
+            while ((line = reader.readLine()) != null)
+                jb.append(line);
+        } catch (Exception e) { /*report an error*/ }
+
+        System.out.println("jb.toString(): " + jb.toString());
+        try {
+            JSONObject jsonObject = HTTP.toJSONObject(jb.toString());
+            System.out.println("json object: " + jsonObject);
+        } catch (JSONException e) {
+            // crash and burn
+            throw new IOException("Error parsing JSON request string");
+        }
+
+
         Enumeration<String> parameterMap = request.getAttributeNames();
         System.out.println("parameters map: " + parameterMap);
 //        for (Map.Entry<String, String[]> entry : parameterMap.entrySet())
