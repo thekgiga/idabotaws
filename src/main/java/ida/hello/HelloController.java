@@ -1,6 +1,8 @@
 package ida.hello;
 
+import ch.qos.logback.core.util.FileUtil;
 import ida.db.DatabaseConnection;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.json.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,11 +10,13 @@ import org.json.JSONObject;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.util.FileSystemUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,6 +26,8 @@ import java.util.Map;
 
 @RestController
 public class HelloController {
+
+    String TEST_JSON_RESPONSE_FILE = "test/response.json";
 
     @RequestMapping("/search")
     public String index(@RequestParam("action") String action, @RequestParam(value = "startDate", required = false) String startDate, @RequestParam(value = "endDate", required = false) String endDate) {
@@ -52,11 +58,10 @@ public class HelloController {
 
     @PostMapping("/bookApt")
     @ResponseBody
-    public ResponseEntity<Boolean> saveData(HttpServletRequest request,
-                                            HttpServletResponse response, Model model) throws IOException {
+    public String saveData(HttpServletRequest request,
+                           HttpServletResponse response, Model model) throws IOException {
 
-        System.out.println("post request receivde");
-
+        System.out.println("post request received");
 
         StringBuffer jb = new StringBuffer();
         String line = null;
@@ -85,7 +90,7 @@ public class HelloController {
 
         System.out.println(request.getParameter("json"));
         String jsonString = request.getParameter("json");
-        return null;
+        return org.apache.commons.io.FileUtils.readFileToString(new File(getClass().getClassLoader().getResource(TEST_JSON_RESPONSE_FILE).getFile()));
     }
 
     public ArrayList executeTestAction() {

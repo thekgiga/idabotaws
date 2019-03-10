@@ -1,0 +1,53 @@
+{
+  "responseId": "b42ceac4-bce2-45fd-a7b6-6fdd86474c41",
+  "queryResult": {
+    "queryText": "yes",
+    "parameters": {
+    },
+    "allRequiredParamsPresent": true,
+    "fulfillmentMessages": [
+      {
+        "text": {
+          "text": [
+            "RESPONSE FROM HEROKU APP"
+          ]
+        },
+        "platform": "SLACK"
+      },
+      {
+        "text": {
+          "text": [
+            ""
+          ]
+        }
+      }
+    ],
+    "outputContexts": [
+      {
+        "name": "projects/ida-bosch-test/agent/sessions/f5940dd5-b190-1b57-ec50-d48a16e276cd/contexts/awaiting_booking_apt_confirmation",
+        "parameters": {
+          "apartment.original": "feuersee",
+          "room_number.original": "2",
+          "room_number": 2.0,
+          "date-period.original": "next week",
+          "apartment": "Feuersee",
+          "date-period": {
+            "startDate": "2019-03-11T12:00:00+01:00",
+            "endDate": "2019-03-17T12:00:00+01:00"
+          }
+        }
+      }
+    ],
+    "intent": {
+      "name": "projects/ida-bosch-test/agent/intents/914c139b-6531-4a3d-8012-c340e83b36fc",
+      "displayName": "apt_booking_confirmation_yes"
+    },
+    "intentDetectionConfidence": 0.75124997,
+    "languageCode": "en"
+  },
+  "originalDetectIntentRequest": {
+    "payload": {
+    }
+  },
+  "session": "projects/ida-bosch-test/agent/sessions/f5940dd5-b190-1b57-ec50-d48a16e276cd"
+}
