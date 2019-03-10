@@ -84,7 +84,7 @@ public class HelloController {
 
         System.out.println(request.getParameter("json"));
         String jsonString = request.getParameter("json");
-        return org.apache.commons.io.FileUtils.readFileToString(new File(getClass().getClassLoader().getResource(TEST_JSON_RESPONSE_FILE).getFile()));
+        return org.apache.commons.io.FileUtils.readFileToString(new File(Thread.currentThread().getContextClassLoader().getResource(TEST_JSON_RESPONSE_FILE).getFile()));
     }
 
     public ArrayList executeTestAction() {
