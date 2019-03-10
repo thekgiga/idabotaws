@@ -85,6 +85,9 @@ public class HelloController {
         System.out.println(request.getParameter("json"));
         String jsonString = request.getParameter("json");
 //        return org.apache.commons.io.FileUtils.readFileToString(new File(Thread.currentThread().getContextClassLoader().getResource(TEST_JSON_RESPONSE_FILE).getFile()));
+
+
+        response.addHeader("Content-type", "application/json");
         return "{\n" +
                 "  \"responseId\": \"b42ceac4-bce2-45fd-a7b6-6fdd86474c41\",\n" +
                 "  \"queryResult\": {\n" +
