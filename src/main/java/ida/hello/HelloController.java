@@ -1,16 +1,11 @@
 package ida.hello;
 
-import ch.qos.logback.core.util.FileUtil;
 import ida.db.DatabaseConnection;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.json.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.http.HttpRequest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.util.FileSystemUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,12 +17,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.Map;
 
 @RestController
 public class HelloController {
 
-    String TEST_JSON_RESPONSE_FILE = "test/response.json";
+    String TEST_JSON_RESPONSE_FILE = "response.json";
 
     @RequestMapping("/search")
     public String index(@RequestParam("action") String action, @RequestParam(value = "startDate", required = false) String startDate, @RequestParam(value = "endDate", required = false) String endDate) {
