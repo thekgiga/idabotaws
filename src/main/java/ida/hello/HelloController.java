@@ -84,7 +84,60 @@ public class HelloController {
 
         System.out.println(request.getParameter("json"));
         String jsonString = request.getParameter("json");
-        return org.apache.commons.io.FileUtils.readFileToString(new File(Thread.currentThread().getContextClassLoader().getResource(TEST_JSON_RESPONSE_FILE).getFile()));
+//        return org.apache.commons.io.FileUtils.readFileToString(new File(Thread.currentThread().getContextClassLoader().getResource(TEST_JSON_RESPONSE_FILE).getFile()));
+        return "{\n" +
+                "  \"responseId\": \"b42ceac4-bce2-45fd-a7b6-6fdd86474c41\",\n" +
+                "  \"queryResult\": {\n" +
+                "    \"queryText\": \"yes\",\n" +
+                "    \"parameters\": {\n" +
+                "    },\n" +
+                "    \"allRequiredParamsPresent\": true,\n" +
+                "    \"fulfillmentMessages\": [\n" +
+                "      {\n" +
+                "        \"text\": {\n" +
+                "          \"text\": [\n" +
+                "            \"RESPONSE FROM HEROKU APP\"\n" +
+                "          ]\n" +
+                "        },\n" +
+                "        \"platform\": \"SLACK\"\n" +
+                "      },\n" +
+                "      {\n" +
+                "        \"text\": {\n" +
+                "          \"text\": [\n" +
+                "            \"\"\n" +
+                "          ]\n" +
+                "        }\n" +
+                "      }\n" +
+                "    ],\n" +
+                "    \"outputContexts\": [\n" +
+                "      {\n" +
+                "        \"name\": \"projects/ida-bosch-test/agent/sessions/f5940dd5-b190-1b57-ec50-d48a16e276cd/contexts/awaiting_booking_apt_confirmation\",\n" +
+                "        \"parameters\": {\n" +
+                "          \"apartment.original\": \"feuersee\",\n" +
+                "          \"room_number.original\": \"2\",\n" +
+                "          \"room_number\": 2.0,\n" +
+                "          \"date-period.original\": \"next week\",\n" +
+                "          \"apartment\": \"Feuersee\",\n" +
+                "          \"date-period\": {\n" +
+                "            \"startDate\": \"2019-03-11T12:00:00+01:00\",\n" +
+                "            \"endDate\": \"2019-03-17T12:00:00+01:00\"\n" +
+                "          }\n" +
+                "        }\n" +
+                "      }\n" +
+                "    ],\n" +
+                "    \"intent\": {\n" +
+                "      \"name\": \"projects/ida-bosch-test/agent/intents/914c139b-6531-4a3d-8012-c340e83b36fc\",\n" +
+                "      \"displayName\": \"apt_booking_confirmation_yes\"\n" +
+                "    },\n" +
+                "    \"intentDetectionConfidence\": 0.75124997,\n" +
+                "    \"languageCode\": \"en\"\n" +
+                "  },\n" +
+                "  \"originalDetectIntentRequest\": {\n" +
+                "    \"payload\": {\n" +
+                "    }\n" +
+                "  },\n" +
+                "  \"session\": \"projects/ida-bosch-test/agent/sessions/f5940dd5-b190-1b57-ec50-d48a16e276cd\"\n" +
+                "}";
     }
 
     public ArrayList executeTestAction() {
